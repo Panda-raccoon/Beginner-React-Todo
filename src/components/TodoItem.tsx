@@ -6,7 +6,7 @@ export default function TodoItem({
   getTodos
  }: { 
   todo: Todo 
-getTodos: () => {}
+getTodos: () => void
 }) {
   const [title, setTitle] = useState(todo.title)
 
