@@ -3,11 +3,11 @@ import type { Todo } from '../App' // type 이라고 명시해주면 데이터�
 
 export default function TodoItem({ 
   todo,
-  getTodos
- }: { 
-  todo: Todo 
-getTodos: () => void
-}) {
+  setTodo
+}: { 
+  todo: Todo
+  setTodo: () => void
+ }) {
   const [title, setTitle] = useState(todo.title)
 
   async function keydownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -32,10 +32,12 @@ async function updateTodo() {
         })
       }
     )
-      const data = await res.json()
-      console.log(data, title)
-      getTodos()
+      const updatedTodo = await res.json()
+      console.log(updatedTodo, title)
+      setTodo(updateTodo)
     }
+    
+
     async function deleteTodo() {
       await fetch (`https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/${todo.id}`, 
         {
