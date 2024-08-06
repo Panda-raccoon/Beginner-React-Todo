@@ -41,16 +41,17 @@ export default function App() {
 
   async function getTodos() {
     try {
-      await new Promise(resolve => setTimeout(resolve, 6000))
-      const res = await fetch ('https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos', {
-        // method 가 표시되어있지 않으면 기본적으로 'GET'이 적용되어있음
-        headers: {
+      const res = await fetch (
+        'https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos',// method 가 표시되어있지 않으면 기본적으로 'GET'이 적용되어있음
+        {
+          headers: {
           'content-type': 'application/json',
           //개체의 속성이름은 특수기호를 쓸수없음
-          apikey: '5X8Z1k7M2vU5Q',
-          username: 'Grepp_KDT4_ParkYoungWoong'
+            apikey: '5X8Z1k7M2vU5Q',
+            username: 'Grepp_KDT4_ParkYoungWoong'
+          }
         }
-      })
+      )
       const data = await res.json()
       console.log('응답결과:', data)
       setTodos(data)
@@ -66,6 +67,23 @@ export default function App() {
     }
   }
 
+
+function setTodo(updatedTodo: Todo) {
+  setTodos(todos => { 
+    return todos.map(todo => {
+      if (todo.id === updatedTodo.id) {
+        return updatedTodo
+      }
+      return todo
+    })
+    })
+  } 
+  function deleteTodo(todoToDelete: Todo) {
+    setTodos(todos => { 
+      return todos.filter(todo => todo.id !== todoToDelete.id )
+    })
+  }  
+
   return (
     <>
       {/* <div>{count}명</div>
@@ -77,8 +95,9 @@ export default function App() {
           <Fragment key={todo.id}>
             <TodoItem 
               todo={todo} 
-              getTodos={getTodos} 
-            />
+              setTodo={setTodo}
+              deleteTodo={deleteTodo}
+           />
           </Fragment>
           
         ))}
