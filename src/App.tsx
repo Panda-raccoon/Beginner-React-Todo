@@ -2,6 +2,7 @@
 import {useState, useEffect, Fragment } from 'react'
 import TheLoader from './components/TheLoader'
 import TodoItem from './components/TodoItem'
+import TodoCreator from './components/TodoCreator'
 
 // export interface ResponseValue {
 //   tital: number
@@ -47,8 +48,8 @@ export default function App() {
           headers: {
           'content-type': 'application/json',
           //개체의 속성이름은 특수기호를 쓸수없음
-            apikey: '5X8Z1k7M2vU5Q',
-            username: 'Grepp_KDT4_ParkYoungWoong'
+            apikey: 'KDT9_AHMq2s7n',
+            username: 'FE1_LeeYeonJi'
           }
         }
       )
@@ -86,6 +87,7 @@ function setTodo(updatedTodo: Todo) {
 
   return (
     <>
+      <TodoCreator getTodos={getTodos} />
       {/* <div>{count}명</div>
       <button onClick={increase}>증가+</button> */}
       <div>{loading && <TheLoader/>}</div>
