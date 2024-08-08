@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import type { Todo } from '../App' // type 이라고 명시해주면 데이터인지 타입인지 구분이 가능
+import { Link } from 'react-router-dom'
+import type { Todo } from '@/routes/Main' // type 이라고 명시해주면 데이터인지 타입인지 구분이 가능
 
 export default function TodoItem({ 
   todo,
@@ -66,6 +67,7 @@ export default function TodoItem({
 
   return (
     <li>
+      <Link to={`/${todo.id}`}>{todo.title}</Link>
       {todo.title}
       <input
          value={title} 
