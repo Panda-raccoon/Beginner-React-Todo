@@ -68,7 +68,6 @@ export default function TodoItem({
   return (
     <li>
       <Link to={`/${todo.id}`}>{todo.title}</Link>
-      {todo.title}
       <input
          value={title} 
         //  defaultValue={todo.title}

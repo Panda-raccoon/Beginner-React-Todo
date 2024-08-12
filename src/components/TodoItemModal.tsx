@@ -1,9 +1,13 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './TodoItemModal.module.css'
+import { useTodosStore } from '@/stores/todos'
+
 
 export default function TodoItemModal() {
   const navigate = useNavigate()
-    const { todoId } = useParams()
+  const { todoId } = useParams()
+  const todos = useTodosStore(state => state.todos)
+  const currentTodo = todos.find(todo => todo.id === todoId )
 
   function offModal() {
     navigate('/')
@@ -15,8 +19,9 @@ export default function TodoItemModal() {
         className={styles.overlay}
         onClick={offModal}></div>
       <div className={styles.contents}>
-        <h2>Hello world!</h2>
-        <h3> Todo ID: {todoId}</h3>
+        <div>{ currentTodo?.title }</div>
+        <div> { currentTodo?.createdAt } </div>
+
       </div>
     </div>
   )
