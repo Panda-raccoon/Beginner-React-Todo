@@ -24,28 +24,6 @@ export default function App() {
   }, [])
 
 
-  // function increase() {
-  //   // count += 1
-  //   setCount(count + 1)
-  // }
-
-
-function setTodo(updatedTodo: Todo) {
-  // setTodos(todos => { 
-  //   return todos.map(todo => {
-  //     if (todo.id === updatedTodo.id) {
-  //       return updatedTodo
-  //     }
-  //     return todo
-  //   })
-  //   })
-  } 
-  function deleteTodo(todoToDelete: Todo) {
-    // setTodos(todos => { 
-    //   return todos.filter(todo => todo.id !== todoToDelete.id )
-    // })
-  }  
-
   return (
     <>
       <TodoCreator getTodos={getTodos} />
@@ -56,8 +34,6 @@ function setTodo(updatedTodo: Todo) {
           <Fragment key={todo.id}>
             <TodoItem 
               todo={todo} 
-              setTodo={setTodo}
-              deleteTodo={deleteTodo}
            />
           </Fragment>
           
@@ -73,3 +49,10 @@ function setTodo(updatedTodo: Todo) {
 
  
 
+
+
+
+  // function increase() {
+  //   // count += 1
+  //   setCount(count + 1)
+  // }
