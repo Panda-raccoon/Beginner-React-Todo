@@ -18,8 +18,8 @@ async function createTodo() {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'apikey': '5X8Z1k7M2vU5Q',
-      'username': 'Grepp_KDT4_ParkYoungWoong'
+      'apikey': 'KDT9_AHMq2s7n',
+      'username': 'FE1_LeeYeonJi'
     },
     body: JSON.stringify({
       title: '아침 먹기!'
