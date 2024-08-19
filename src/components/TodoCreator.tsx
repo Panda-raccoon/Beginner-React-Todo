@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useState } from 'react'
 
 export default function TodoCreator({getTodos}: { getTodos: () => void }) {
@@ -10,23 +11,12 @@ export default function TodoCreator({getTodos}: { getTodos: () => void }) {
     }
   }
   async function createTodo() {
-    // const res = await fetch(
-    await fetch(  
-      `https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/`,
-      {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          apikey: 'KDT9_AHMq2s7n',
-          username: 'FE1_LeeYeonJi'
-        },
-        body: JSON.stringify({
-          title
-        })
+    await axios.post('/api/todos', {
+      method: 'POST',
+      data: {
+        title
       }
-    )
-    // const newTodo: Todo = await res.json()
-    // todos.splice(0, 0, newTodo)
+    })
     getTodos()
   }
   return (
